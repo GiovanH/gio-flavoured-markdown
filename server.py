@@ -9,12 +9,19 @@ app = Flask(__name__)
 
 md = markdown.Markdown(extensions=["customblocks"])
 
-
-@app.route("/")
+@app.route('/', methods=['GET'])
 def home():
-  markdowncontent = "Hello! I'm *formatted*."
-  rendered = md.convert(markdowncontent)
   return render_template("index.html", **locals())
+
+
+@app.route('/render', methods=['POST'])
+def render():
+  default_value = "Hello! I'm *formatted*."
+  markdowncontent = request.form.get('textarea', default_value)
+  rendered = md.convert(markdowncontent)
+  return rendered
 
 if __name__ == "__main__":
   app.run()
+
+  

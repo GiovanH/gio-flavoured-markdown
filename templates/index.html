@@ -6,10 +6,11 @@
   <body>
     <h1>Webbed Site</h1>
     <div class="left">
-      <textarea>Input here</textarea>
+      <form action="/render" method="POST">
+        <textarea name="textarea">Input here</textarea>
+        <input type = "submit" value = "Submit" />
+      </form>
     </div>
-    <div class="right">
-      {{ rendered }}
-    </div>
+    <div class="right">{{ rendered|safe }}</div>
   </body>
 </html>
