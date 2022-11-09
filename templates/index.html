@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="static/style.css">
-    {{mde.css}}
+    <link rel="stylesheet" type="text/css" href="static/style.css" />
   </head>
   <body>
-    <h1>
-      Webbed Site
-    </h1>
+    <h1>Webbed Site</h1>
     <div class="left">
-    {{mde.editor()}}
+      <textarea>Input here</textarea>
     </div>
     <div class="right">
-    {{mde.preview}}
+      {{ rendered }}
     </div>
-    {{mde.js}}
   </body>
 </html>
