@@ -1,1 +1,13 @@
-{}
+{
+	"install": "./install.sh",
+	"start": "python3 server.py",
+	"watch": {
+		"install": {
+			"include": ["^requirements3\\.txt$", "\\.sh$"]
+		},
+		"restart": {
+			"include": ["\\.py$"]
+		},
+		"throttle": 100
+	}
+}
