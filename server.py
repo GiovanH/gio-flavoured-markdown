@@ -2,6 +2,7 @@ import logging
 from flask import Flask
 from flask import render_template
 from flask import request
+import lzstring
 
 import markdown
 import markdown.extensions.fenced_code
@@ -52,7 +53,7 @@ def render():
   default_value = ""
   
   args = request.args
-  input_str = args.get("q", default_value)
+  input_str = lzstring.LZString().decompress(args.get("q", default_value))
   
   md_html = md.convert(input_str)
   

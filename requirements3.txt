@@ -3,4 +3,5 @@ markdown
 markdown-customblocks
 pymdown-extensions
 mdx_outline
+git+https://github.com/eduardtomasek/lz-string-python.git
 # Flask-MDE 
