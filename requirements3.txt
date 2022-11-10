@@ -2,4 +2,5 @@ Flask
 markdown
 markdown-customblocks
 pymdown-extensions
+mdx_outline
 # Flask-MDE 

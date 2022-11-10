@@ -1,3 +1,4 @@
+import logging
 from flask import Flask
 from flask import render_template
 from flask import request
@@ -8,8 +9,11 @@ import markdown.extensions.codehilite
 
 import customblocks
 
-import peliplugins
+import sys
+sys.path.append("./peliplugins")
+sys.path.append("./mdexts")
 
+import gio_customblocks
 
 with open('static/markdown.css', "r") as fp:
     md_css = fp.read()
@@ -17,54 +21,22 @@ with open('static/markdown.css', "r") as fp:
 app = Flask(__name__)
 # mde = Mde(app)
 
+class dummy():
+  pass
 
-MARKDOWN = {
-    'extension_configs': {
-        # Utility and enhancement
-        'markdown.extensions.extra': {},
-        'markdown.extensions.meta': {},
-        'markdown.extensions.attr_list': {},
-        # Extra tags
-        'markdown.extensions.toc': {'permalink': "🔗"},
-        'markdown.extensions.smarty': {
-            'smart_angled_quotes': False,
-            'smart_dashes': True,
-            'smart_quotes': True,
-            'smart_ellipses': True
-        },
-        # 'pymdownx.tasklist': {},
-        'pymdownx.snippets': {
-            'check_paths': True,
-            'base_path': ['content', '.']
-        },
-        'pymdownx.tabbed': {},
-        'pymdownx.superfences': {
-            'preserve_tabs': True,
-        },
-        'pymdownx.highlight': {
-            'extend_pygments_lang': [
-                {"name": "php-inline", "lang": "php", "options": {"startinline": True}},
-                {"name": "renpy", "lang": "python"}
-            ],
-            'linenums': 1
-        },
-        'customblocks': {
-            'generators': {}
-        },
-        "html5video": {},
-        "youtube": {},
-        # 'spoilerbox': {},
-        'mdx_outline': {},
-    },
-    'output_format': 'html5'
+with open("pelicanconf_markdown.py", "r") as fp:
+  exec(fp.read())
+
+pelican_object = dummy()
+pelican_object.settings = {
+    'MARKDOWN': MARKDOWN
 }
 
+gio_customblocks.pelican_init(pelican_object)
+
 md = markdown.Markdown(
-  extensions=[
-    'fenced_code', 'codehilite', 'tables',
-    'customblocks'
-  ],
-  extension_configs=MARKDOWN['extension_configs']
+  extensions=list(pelican_object.settings['MARKDOWN']['extension_configs'].keys()),
+  extension_configs=pelican_object.settings['MARKDOWN']['extension_configs']
 )
 
 @app.route('/', methods=['GET'])
