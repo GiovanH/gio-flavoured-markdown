@@ -2,15 +2,42 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="static/style.css" />
+    <script type="text/javascript" src="static/preview.js"></script>
   </head>
   <body>
     <h1>Webbed Site</h1>
-    <div class="left">
-      <form action="/render" method="POST">
-        <textarea name="textarea">Input here</textarea>
-        <input type = "submit" value = "Submit" />
-      </form>
+    <div class="flex" style="height: 100%">
+      <input type="checkbox" class="flaskonly toggle" checked />
+      <div class="flex col">
+        <h2>Markdown</h2>
+        <textarea id="md" oninput="updateiframe(this, 'theiframe')"></textarea>
+      </div>
+      <div class="flex col flaskonly">
+        <h2>Markdown HTML</h2>
+        <iframe id="theiframe" src="/render"></iframe>
+        <!-- <div class="footer"></div> -->
+      </div>
     </div>
-    <div class="right">{{ rendered|safe }}</div>
   </body>
+  <style>
+    .flex {
+      display: flex;
+    }
+    .flex * {
+      flex: 1;
+    }
+    .col {
+      flex-direction: column;
+    }
+    h2 {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue",
+        sans-serif;
+    }
+    .flex h2,
+    .flex input {
+      flex: 0 1;
+    }
+  </style>
 </html>

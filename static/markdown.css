@@ -1,0 +1,70 @@
+body {margin: 0;}
+pre code {
+  display: block;
+  font-size: 12px;
+  line-height: 18px;
+  overflow: auto;
+  padding: 6px 10px;
+}
+code {
+  background-clip: padding-box;
+  border-radius: 3px;
+  border: 1px solid #DFE1E6;
+  background-color: #F4F5F7;
+  display: inline-block;
+  margin: 0 2px -1px;
+  padding: 0px 3px;
+  text-decoration: inherit;
+  vertical-align: baseline;
+}
+h1, h2, h3, h4, h5, h6 { display: block; }
+h3, h4, h5, h6 { font-weight: bold; }
+h1, h2 { margin: 10px 0 20px 0; }
+h3, h4, h5, h6 {
+  margin: 10px 0;
+}
+ul, ol {
+  margin: 10px 30px;
+  padding: 0;
+}
+img {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+table {
+  border-collapse: collapse;
+  margin: 20px 0;
+  width: auto;
+}
+table > tbody > tr,
+table > tfoot > tr {
+  background: #FFFFFF;
+  border-bottom: 1px solid #DFE1E6;
+}
+table > tbody > tr > td,
+table > tfoot > tr > td {
+  padding: 7px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+table > tbody > tr:first-child,
+table > tfoot > tr:first-child {
+  border-top: 1px solid #DFE1E6;
+}
+table > thead > tr {
+  border-bottom: 1px solid #DFE1E6;
+}
+table > thead > tr > td,
+table > thead > tr > th {
+  padding: 7px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+table table { margin: 0; }
+ul { list-style-type: disc; }
+ul > li > ul { list-style-type: circle; }
+ul > li > ul > li > ul {  list-style-type: square; }
+body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+    font-size: 14px;
+}
