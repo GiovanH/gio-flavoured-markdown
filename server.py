@@ -8,16 +8,64 @@ import markdown.extensions.codehilite
 
 import customblocks
 
+import peliplugins
+
+
 with open('static/markdown.css', "r") as fp:
     md_css = fp.read()
 
 app = Flask(__name__)
 # mde = Mde(app)
 
-md = markdown.Markdown(extensions=[
-  'fenced_code', 'codehilite', 'tables',
-  "customblocks"
-])
+
+MARKDOWN = {
+    'extension_configs': {
+        # Utility and enhancement
+        'markdown.extensions.extra': {},
+        'markdown.extensions.meta': {},
+        'markdown.extensions.attr_list': {},
+        # Extra tags
+        'markdown.extensions.toc': {'permalink': "🔗"},
+        'markdown.extensions.smarty': {
+            'smart_angled_quotes': False,
+            'smart_dashes': True,
+            'smart_quotes': True,
+            'smart_ellipses': True
+        },
+        # 'pymdownx.tasklist': {},
+        'pymdownx.snippets': {
+            'check_paths': True,
+            'base_path': ['content', '.']
+        },
+        'pymdownx.tabbed': {},
+        'pymdownx.superfences': {
+            'preserve_tabs': True,
+        },
+        'pymdownx.highlight': {
+            'extend_pygments_lang': [
+                {"name": "php-inline", "lang": "php", "options": {"startinline": True}},
+                {"name": "renpy", "lang": "python"}
+            ],
+            'linenums': 1
+        },
+        'customblocks': {
+            'generators': {}
+        },
+        "html5video": {},
+        "youtube": {},
+        # 'spoilerbox': {},
+        'mdx_outline': {},
+    },
+    'output_format': 'html5'
+}
+
+md = markdown.Markdown(
+  extensions=[
+    'fenced_code', 'codehilite', 'tables',
+    'customblocks'
+  ],
+  extension_configs=MARKDOWN['extension_configs']
+)
 
 @app.route('/', methods=['GET'])
 def home():
@@ -32,9 +80,8 @@ def render():
   input_str = args.get("q", default_value)
   
   md_html = md.convert(input_str)
-  md_css_html = """<head><link href="https://blog.giovanh.com/theme/css/print.css" media="print" rel="stylesheet" type="text/css"><style>{}</style></head>""".format(md_css)
-
-  return md_html + md_css_html
+  
+  return render_template("markdown.html", **locals())
 
 @app.errorhandler(500)
 def internal_error(exception):
