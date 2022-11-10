@@ -26,13 +26,13 @@ def home():
 
 @app.route('/render')
 def render():
-  default_value = "Hello! I'm *formatted*."
+  default_value = ""
   
   args = request.args
   input_str = args.get("q", default_value)
   
   md_html = md.convert(input_str)
-  md_css_html = "<style>{}</style>".format(md_css)
+  md_css_html = """<head><link href="https://blog.giovanh.com/theme/css/print.css" media="print" rel="stylesheet" type="text/css"><style>{}</style></head>""".format(md_css)
 
   return md_html + md_css_html
 

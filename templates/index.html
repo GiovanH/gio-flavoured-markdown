@@ -5,39 +5,39 @@
     <script type="text/javascript" src="static/preview.js"></script>
   </head>
   <body>
-    <h1>Webbed Site</h1>
     <div class="flex" style="height: 100%">
       <input type="checkbox" class="flaskonly toggle" checked />
       <div class="flex col">
         <h2>Markdown</h2>
-        <textarea id="md" oninput="updateiframe(this, 'theiframe')"></textarea>
+        <textarea id="md" oninput="updateiframe(this, 'theiframe')">## Overview
+
+### Philosophy
+
+Markdown is intended to be as easy-to-read and easy-to-write as is feasible.
+
+Readability, however, is emphasized above all else. A Markdown-formatted
+document should be publishable as-is, as plain text, without looking
+like it's been marked up with tags or formatting instructions. While
+Markdown's syntax has been influenced by several existing text-to-HTML
+filters -- including [Setext](http://docutils.sourceforge.net/mirror/setext.html), [atx](http://www.aaronsw.com/2002/atx/), [Textile](http://textism.com/tools/textile/), [reStructuredText](http://docutils.sourceforge.net/rst.html),
+[Grutatext](http://www.triptico.com/software/grutatxt.html), and [EtText](http://ettext.taint.org/doc/) -- the single biggest source of
+inspiration for Markdown's syntax is the format of plain text email.
+
+## Block Elements
+
+### Paragraphs and Line Breaks
+
+A paragraph is simply one or more consecutive lines of text, separated
+by one or more blank lines. (A blank line is any line that looks like a
+blank line -- a line containing nothing but spaces or tabs is considered
+blank.) Normal paragraphs should not be indented with spaces or tabs.
+</textarea>
       </div>
       <div class="flex col flaskonly">
         <h2>Markdown HTML</h2>
         <iframe id="theiframe" src="/render"></iframe>
-        <!-- <div class="footer"></div> -->
       </div>
     </div>
   </body>
-  <style>
-    .flex {
-      display: flex;
-    }
-    .flex * {
-      flex: 1;
-    }
-    .col {
-      flex-direction: column;
-    }
-    h2 {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-        "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue",
-        sans-serif;
-    }
-    .flex h2,
-    .flex input {
-      flex: 0 1;
-    }
-  </style>
+        <script>(async()=>{updateiframe(document.getElementById('md'), 'theiframe')})();</script>
 </html>
