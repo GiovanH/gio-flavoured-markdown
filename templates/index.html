@@ -9,7 +9,8 @@
       <input type="checkbox" class="flaskonly toggle" checked />
       <div class="flex col">
         <h2>Markdown</h2>
-        <textarea id="md" oninput="updateiframe(this, 'theiframe')">## Overview
+        <textarea id="md" oninput="updateiframe(this, 'theiframe')">
+## Overview
 
 ::: spoiler Pesterlog
     This is *true* markdown text.
@@ -42,5 +43,9 @@ blank.) Normal paragraphs should not be indented with spaces or tabs.
       </div>
     </div>
   </body>
-        <script>(async()=>{updateiframe(document.getElementById('md'), 'theiframe')})();</script>
+  <script>
+    (async () => {
+      updateiframe(document.getElementById("md"), "theiframe");
+    })();
+  </script>
 </html>
