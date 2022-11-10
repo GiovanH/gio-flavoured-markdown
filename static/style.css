@@ -22,3 +22,7 @@ body {
     margin: 8px;
     min-height: calc(100vh - 16px);
 }
+
+input.toggle:not(:checked) + * { display: none; }
+.flex h2, .flex input { flex: 0 1; }
+.flex input { margin-bottom: auto; }
