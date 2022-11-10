@@ -1,8 +1,11 @@
-::: imessage
+::: imessage name="im gio" style="--color-self: #087efe;"
     + You
-        * This one doesn't exist yet!
+        * First message
     + Them
-        * Dang.
+        * Reply 
+        
+        
+        
 
 ### SuperFences
 
