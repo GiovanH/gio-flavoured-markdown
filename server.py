@@ -1,4 +1,5 @@
 import logging
+import traceback
 from flask import Flask
 from flask import render_template
 from flask import request
@@ -53,7 +54,7 @@ def render():
   default_value = ""
   
   args = request.args
-  input_str = lzstring.LZString().decompress(args.get("q", default_value))
+  input_str = lzstring.LZString().decompresFromBase64(args.get("q", default_value))
   
   md_html = md.convert(input_str)
   
@@ -62,6 +63,11 @@ def render():
 @app.errorhandler(500)
 def internal_error(exception):
     print("500 error caught")
+    return traceback.format_exc()
+  
+@app.errorhandler(400)
+def internal_error(exception):
+    print("400 error caught")
     return traceback.format_exc()
   
 if __name__ == "__main__":

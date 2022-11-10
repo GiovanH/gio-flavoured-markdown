@@ -9,7 +9,10 @@ function debounce(func, timeout = 300){
 
 function _updateiframe(mdArea, iframe_id) {
   try {
-    document.getElementById(iframe_id).setAttribute('src', "/render?q=" + LZString144.compressToEncodedURIComponent(mdArea.value))
+    document.getElementById(iframe_id).setAttribute(
+      'src', 
+      "/render?q=" + encodeURIComponent(LZString144.compressToBase64(mdArea.value))
+    )
   } catch {}
 }
 
