@@ -93,6 +93,12 @@ graph TD
 
 ```
 
+But it needs renderdeps!
+
+<script>window.markdeepOptions={mode:"html"};</script>
+<style class="fallback">pre.markdeep{white-space:pre;font-family:monospace}</style>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 
 ### Asides
 
@@ -138,7 +144,5 @@ A footnote with a complicated definition.[^2]
         a code block
 
     A final paragraph.
-
-    The only problem is that the actual gameplay feels... janky? Just unpolished. It's generally tricky to move where you want to go, the buttons have odd bounding boxes, and it just doesn't *feel* great to play, from a programming standpoint. There are lots of little janky programming things, like the menu with a "Save Game" option but no "Load Game" option, and the cursor not indicating whether or not things are interactable at points. There's a single snake minigame (the Nokia one, not a cool serpent pal) that's repeated twice and feels like a my-first-unity tutorial project, and really nothing else. It really feels like the actual programming of the game was rushed and sloppy.
 
 This is a second point, but it has the same footnote. Weird![^2]

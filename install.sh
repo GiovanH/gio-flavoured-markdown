@@ -12,7 +12,7 @@ git_clone_or_update() {
 }
 
 python3 -m pip install -r requirements3.txt \
- & wget 'https://raw.githubusercontent.com/eduardtomasek/lz-string-python/master/lzstring.py' \
+ & wget -nc 'https://raw.githubusercontent.com/marcel-dancak/lz-string-python/master/lzstring.py' \
  & git_clone_or_update https://github.com/GiovanH/mdexts.git \
  & git_clone_or_update https://github.com/GiovanH/peliplugins.git
  

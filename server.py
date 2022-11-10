@@ -3,7 +3,7 @@ import traceback
 from flask import Flask
 from flask import render_template
 from flask import request
-import lzstring
+from lzstring import LZString
 import base64
 
 import markdown
@@ -37,9 +37,13 @@ pelican_object.settings = {
 
 gio_customblocks.pelican_init(pelican_object)
 
+extension_configs = pelican_object.settings['MARKDOWN']['extension_configs']
+
+print(extension_configs)
+
 md = markdown.Markdown(
-  extensions=list(pelican_object.settings['MARKDOWN']['extension_configs'].keys()),
-  extension_configs=pelican_object.settings['MARKDOWN']['extension_configs']
+  extensions=list(extension_configs.keys()),
+  extension_configs=extension_configs
 )
 
 with open("static/default_input.md", "r") as fp:
@@ -54,14 +58,9 @@ value_arg = "Global"
 @app.route('/render')
 def render():
   default_value = ""
-  
-  args = request.args
-  value_arg = args.get("q", default_value)
-  logging.error(value_arg)
-  decoded = base64.b64decode(value_arg).decode("utf-8")
-  logging.error(decoded)
-  input_str = lzstring.LZString().decompress(str(decoded))
-  logging.error(input_str)
+
+  value_arg = request.args.get("q", default_value)
+  input_str = LZString.decompressFromEncodedURIComponent(value_arg)
   md_html = md.convert(input_str)
   
   return render_template("markdown.html", **locals())

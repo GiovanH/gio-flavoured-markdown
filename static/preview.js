@@ -11,7 +11,7 @@ function _updateiframe(mdArea, iframe_id) {
   try {
     document.getElementById(iframe_id).setAttribute(
       'src', 
-      "/render?q=" + encodeURIComponent(LZString144.compressToBase64(mdArea.value))
+      "/render?q=" + LZString144.compressToEncodedURIComponent(mdArea.value)
     )
   } catch {}
 }
