@@ -2,6 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="static/style.css" />
+    <script type="text/javascript" src="//pieroxy.net/lzstring/lz-string-1.4.4.js"></script>
     <script type="text/javascript" src="static/preview.js"></script>
   </head>
   <body>
@@ -10,33 +11,7 @@
       <div class="flex col">
         <h2>Markdown</h2>
         <textarea id="md" oninput="updateiframe(this, 'theiframe')">
-## Overview
-
-::: spoiler Pesterlog
-    This is *true* markdown text.
-    
-### Footnotes
-
-Footnotes[^1] have a label[^@#$%] and the footnote's content.
-
-[^1]: This is a footnote content.
-[^@#$%]: A footnote on the label: "@#$%".
-
-A footnote with a complicated definition.[^2]
-
-[^2]:
-    The first paragraph of the definition.
-
-    Paragraph two of the definition.
-          
-### Captions
-
-![Alt text]({static}extensions_test/IMG_3958.PNG)
-*an image with a pseudocaption*
-
-![Alt text]({static}extensions_test/IMG_3958.PNG)
-
-*an image followed by italics*
+          {{- default_input | safe -}}
         </textarea>
       </div>
       <input type="checkbox" class="toggle" checked />

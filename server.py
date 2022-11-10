@@ -39,9 +39,12 @@ md = markdown.Markdown(
   extension_configs=pelican_object.settings['MARKDOWN']['extension_configs']
 )
 
+with open("static/default_input.md", "r") as fp:
+  DEFAULT_INPUT = fp.read()
+
 @app.route('/', methods=['GET'])
 def home():
-  return render_template("index.html", **locals())
+  return render_template("index.html", default_input=DEFAULT_INPUT)
 
 
 @app.route('/render')
