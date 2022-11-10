@@ -60,7 +60,7 @@ def render():
   default_value = ""
 
   value_arg = request.args.get("q", default_value)
-  input_str = LZString.decompressFromEncodedURIComponent(value_arg)
+  input_str = LZString.decompressFromEncodedURIComponent(value_arg) or ''
   md_html = md.convert(input_str)
   
   return render_template("markdown.html", **locals())
