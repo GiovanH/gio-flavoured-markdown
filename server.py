@@ -4,6 +4,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 import lzstring
+import base64
 
 import markdown
 import markdown.extensions.fenced_code
@@ -48,14 +49,19 @@ with open("static/default_input.md", "r") as fp:
 def home():
   return render_template("index.html", default_input=DEFAULT_INPUT)
 
+value_arg = "Global"
 
 @app.route('/render')
 def render():
   default_value = ""
   
   args = request.args
-  input_str = lzstring.LZString().decompresFromBase64(args.get("q", default_value))
-  
+  value_arg = args.get("q", default_value)
+  logging.error(value_arg)
+  decoded = base64.b64decode(value_arg).decode("utf-8")
+  logging.error(decoded)
+  input_str = lzstring.LZString().decompress(str(decoded))
+  logging.error(input_str)
   md_html = md.convert(input_str)
   
   return render_template("markdown.html", **locals())
