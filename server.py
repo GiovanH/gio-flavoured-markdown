@@ -41,11 +41,6 @@ extension_configs = pelican_object.settings['MARKDOWN']['extension_configs']
 
 print(extension_configs)
 
-md = markdown.Markdown(
-  extensions=list(extension_configs.keys()),
-  extension_configs=extension_configs
-)
-
 with open("static/default_input.md", "r") as fp:
   DEFAULT_INPUT = fp.read()
 
@@ -61,7 +56,11 @@ def render():
 
   value_arg = request.args.get("q", default_value)
   input_str = LZString.decompressFromEncodedURIComponent(value_arg) or ''
-  md_html = md.convert(input_str)
+  md_html = markdown.markdown(
+    text=input_str,
+    extensions=list(extension_configs.keys()),
+    extension_configs=extension_configs
+  )
   
   return render_template("markdown.html", **locals())
 
