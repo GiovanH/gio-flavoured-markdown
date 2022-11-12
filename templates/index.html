@@ -5,19 +5,14 @@
     <script type="text/javascript" src="//pieroxy.net/lzstring/lz-string-1.4.4.js"></script>
     <script type="text/javascript" src="static/preview.js"></script>
   
-    <script defer src="https://codemirror.net/codemirror.js"></script>
+    <script src="https://codemirror.net/codemirror.js"></script>
   </head>
   <body>
     <div class="flex" style="height: 100%">
       <input type="checkbox" class="flaskonly toggle" checked />
       <div class="flex col">
         <h2>Markdown</h2>
-          {# <textarea id="md" oninput="updateiframe(this, document.getElementById('theiframe'))">
-          {{- default_input | safe -}}
-        </textarea> #}
-        <div id="surface">
-          <div id="editor"></div>
-        </div>
+        <div id="editor"></div>
       </div>
       <input type="checkbox" class="toggle" checked />
       <div class="flex col">
@@ -28,13 +23,18 @@
     <span>
       Templates:
       {% for name in ['default', 'imessage', 'discord', 'spoiler', 'aside'] %}
-      <a href="javascript:setMarkdown(document.getElementById('md'), '{{ name }}')">{{ name }}</a>
+      <a href="javascript:setMarkdown('{{ name }}')">{{ name }}</a>
       {% endfor %}
       </span>
   </body>
-  <script>
-    (async () => {
-      document.getElementById('md').oninput();
-    })();
+  <script>   
+      window.view = new CM.codemirror.EditorView({
+        doc: "",
+        extensions: CM.codemirror.minimalSetup,
+        parent: document.getElementById('editor')
+      })
+      
+      console.log(view)
+      run()
   </script>
 </html>

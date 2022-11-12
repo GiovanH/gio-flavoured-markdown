@@ -6,8 +6,9 @@
 			"include": ["^requirements3\\.txt$", "\\.sh$"]
 		},
 		"restart": {
-			"include": ["^glitch\\.json$", "\\.py$", "\\.html$", "\\.js$", "default_input\\.md$"]
+			"include": ["\\.py$", "\\.html$", "default_input\\.md$"]
 		},
+    "norestartrightnow": ["^glitch\\.json$", "\\.js$"],
 		"throttle": 100
 	}
 }
