@@ -3,6 +3,7 @@
 }
 .flex-expand {
   flex: 1;
+  min-width: 80px;  /* not auto */
 }
 .col {
   flex-direction: column;

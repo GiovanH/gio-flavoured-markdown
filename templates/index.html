@@ -2,9 +2,12 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="static/style.css" />
-    <script type="text/javascript" src="//pieroxy.net/lzstring/lz-string-1.4.4.js"></script>
+    <script
+      type="text/javascript"
+      src="//pieroxy.net/lzstring/lz-string-1.4.4.js"
+    ></script>
     <script type="text/javascript" src="static/preview.js"></script>
-  
+
     <script src="https://codemirror.net/codemirror.js"></script>
   </head>
   <body class="flex-parent col">
@@ -12,36 +15,44 @@
       <input type="checkbox" class="flaskonly toggle" checked />
       <div class="flex-parent flex-expand col">
         <h2>Markdown</h2>
-        <div id="editor"></div>
+        <div id="editor" class="flex-expand"></div>
       </div>
       <input type="checkbox" class="toggle" checked />
       <div class="flex-parent flex-expand col">
         <h2>Markdown HTML</h2>
-        <iframe id="theiframe" src="/render"></iframe>
+        <iframe id="theiframe" class="flex-expand" src="/render"></iframe>
       </div>
     </div>
     <span>
-      Templates:
-      {% for name in ['default', 'imessage', 'discord', 'spoiler', 'aside'] %}
-      <a href="javascript:setMarkdown('{{ name }}')">{{ name }}</a>
+      Templates: {% for name in ['default', 'imessage', 'discord', 'spoiler',
+      'aside'] %}
+      <a href="javascript:setMarkdownTemplate('{{ name }}')">{{ name }}</a>
       {% endfor %}
-      </span>
+    </span>
   </body>
   <script>
-window.view = new CM.codemirror.EditorView({
-  doc: "",
-  extensions: [
-    CM.codemirror.basicSetup,
-    CM['@codemirror/view'].keymap.of([
-      CM['@codemirror/lang-markdown'].markdown,
-      CM['@codemirror/commands'].indentWithTab,
-      // {key: "Ctrl-Enter", run: () => run()}
-    ]),
-  ],
-  parent: document.getElementById('editor')
-})
+    window.view = new CM.codemirror.EditorView({
+      parent: document.getElementById("editor"),
+    });
+    console.log(view);
 
-console.log(view)
-run();
+    function setMarkdown(doc) {
+      view.setState(
+        CM['@codemirror/state'].EditorState.create({
+          doc: doc,
+          extensions: [
+            CM.codemirror.basicSetup,
+            CM["@codemirror/view"].keymap.of([
+              CM["@codemirror/lang-markdown"].markdown,
+              CM["@codemirror/commands"].indentWithTab,
+              // {key: "Ctrl-Enter", run: () => run()}
+            ]),
+          ],
+        })
+      );
+      updateiframe();
+    }
+    setMarkdownTemplate("default");
+
   </script>
 </html>

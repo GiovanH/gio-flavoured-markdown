@@ -4,11 +4,9 @@ async function fetchTemplate(name) {
   return text
 }
 
-function setMarkdown(name) {
-    fetchTemplate(name).then(text => {
-      window.view.dispatch({
-      changes: {from: 0, insert: text}
-    })
+function setMarkdownTemplate(name) {
+  fetchTemplate(name).then(text => {
+    setMarkdown(text)
   });
 }
 
@@ -20,7 +18,8 @@ function debounce(func, timeout = 300){
   };
 }
 
-function _updateiframe(iframe) {
+function updateiframe() {
+  const iframe = document.getElementById('theiframe')
   const value = window.view.state.doc.toString()
   try {
     iframe.setAttribute(
@@ -30,16 +29,8 @@ function _updateiframe(iframe) {
   } catch {}
 }
 
-const updateiframe = debounce(_updateiframe, 500)
-
-function run() {
-  console.log("Run()ning...")
-  updateiframe(document.getElementById('theiframe'))
-}
+const updateiframeDebounced = debounce(updateiframe, 500)
 
 window.addEventListener("keydown", e => {
-  if (e.keyCode == 13) {
-    run();
-    e.preventDefault();
-  }
+  updateiframeDebounced();
 });
