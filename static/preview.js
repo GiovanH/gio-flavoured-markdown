@@ -4,10 +4,23 @@ async function fetchTemplate(name) {
   return text
 }
 
+window.view = new CM.codemirror.EditorView({
+  doc: "",
+  extensions: [
+    CM.codemirror.basicSetup,
+    CM.codemirror.basicSetup,
+  ],
+  parent: document.getElementById('editor')
+})
+
+console.log(view)
+run();
+
 function setMarkdown(name) {
-  fetchTemplate(name).then(text => {
-    mdArea.value = text // todo transaction on view
-    mdArea.oninput()
+    fetchTemplate(name).then(text => {
+      window.view.dispatch({
+      changes: {from: 0, insert: text}
+    })
   });
 }
 
@@ -32,8 +45,7 @@ function _updateiframe(iframe) {
 const updateiframe = debounce(_updateiframe, 500)
 
 function run() {
-  view
-  updateiframe(theiframe)
+  updateiframe(document.getElementById('theiframe'))
 }
 
 window.addEventListener("keydown", e => {
