@@ -1,0 +1,18 @@
+
+::: aside
+    as plain as it gets
+
+
+::: aside computers-are-bad
+    This indicates that I have just told you a little white lie for the sake of simplicity, like a math teacher fibbing that you can't take the square root of negative numbers, but my conscience will not let it go uncommented upon.
+
+    i'm indented! don't kill me
+:::
+
+
+
+::: aside update
+    multiline update aside
+    
+    from the future
+    

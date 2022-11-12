@@ -1,0 +1,13 @@
+
+::: discord avatar_Gio="https://file.garden/X1htvgJ0DEp_tp-Z/Static%20Bi%20Robin.png" avatar_Flare="/image2.jpg" color_Gio="#aa0001"
+    - Gio
+        + Wow! This discord layout is so much easier to understand, and more compact too!
+        + This is a new message! Ooo look how the color changes when you hover over me (Sorry again phone users)
+        + Look, it's the other user! and it's all in one div instead of like 4 lmfoa
+    
+    *November 10, 2022*
+
+    - Gio
+        + Actually yeah I love that
+    - Flare 
+        + You are right to. You are a perfect person 

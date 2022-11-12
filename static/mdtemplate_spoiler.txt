@@ -1,0 +1,22 @@
+
+::: spoiler
+    This is *true* markdown text.
+    
+    Markdown allows you to be lazy and only put the `>` before the first
+    line of a hard-wrapped paragraph:
+    
+    > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+    consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+    Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+    
+    Spoilers will happily nest arbitrarily:
+    ::: spoiler
+        See?
+
+::: spoiler Pesterlog
+    This is *true* markdown text.
+
+TOC inside a spoiler:
+
+::: spoiler TOC
+    [TOC]

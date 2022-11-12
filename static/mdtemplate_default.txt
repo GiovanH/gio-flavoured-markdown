@@ -1,25 +1,3 @@
-::: imessage name="im gio" style="--color-self: #087efe;"
-    + You
-        * First message
-    + Them
-        * Reply 
-        
-
-::: discord avatar_Gio="https://file.garden/X1htvgJ0DEp_tp-Z/Static%20Bi%20Robin.png" avatar_Flare="/image2.jpg" color_Gio="#aa0001"
-    - Gio
-        + Wow! This discord layout is so much easier to understand, and more compact too!
-        + This is a new message! Ooo look how the color changes when you hover over me (Sorry again phone users)
-        + Look, it's the other user! and it's all in one div instead of like 4 lmfoa
-    
-    *November 10, 2022*
-
-    - Gio
-        + Actually yeah I love that
-    - Flare 
-        + You are right to. You are a perfect person 
-
-        
-
 ### SuperFences
 
 Inline code `is like this`.
@@ -121,30 +99,6 @@ But it needs renderdeps!
 <style class="fallback">pre.markdeep{white-space:pre;font-family:monospace}</style>
 <script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
 <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
-
-### Asides
-
-::: spoiler
-    This is *true* markdown text.
-    
-    Markdown allows you to be lazy and only put the `>` before the first
-    line of a hard-wrapped paragraph:
-    
->     This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
-    consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
-    Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-    
-    Spoilers will happily nest arbitrarily:
-    ::: spoiler
-        See?
-
-::: spoiler Pesterlog
-    This is *true* markdown text.
-
-TOC inside a spoiler:
-
-::: spoiler TOC
-    [TOC]
 
 ### Footnotes
 

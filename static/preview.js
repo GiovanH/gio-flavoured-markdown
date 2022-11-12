@@ -7,6 +7,7 @@ async function fetchTemplate(name) {
 function setMarkdown(mdArea, name) {
   fetchTemplate(name).then(text => {
     mdArea.value = text
+    mdArea.oninput()
   });
 }
 
