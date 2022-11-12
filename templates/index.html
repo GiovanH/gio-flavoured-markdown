@@ -27,4 +27,21 @@
       {% endfor %}
       </span>
   </body>
+  <script>
+window.view = new CM.codemirror.EditorView({
+  doc: "",
+  extensions: [
+    CM.codemirror.basicSetup,
+    CM['@codemirror/view'].keymap.of([
+      CM['@codemirror/lang-markdown'].markdown,
+      CM['@codemirror/commands'].indentWithTab,
+      // {key: "Ctrl-Enter", run: () => run()}
+    ]),
+  ],
+  parent: document.getElementById('editor')
+})
+
+console.log(view)
+run();
+  </script>
 </html>

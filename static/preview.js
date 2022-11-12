@@ -4,18 +4,6 @@ async function fetchTemplate(name) {
   return text
 }
 
-window.view = new CM.codemirror.EditorView({
-  doc: "",
-  extensions: [
-    CM.codemirror.basicSetup,
-    CM.codemirror.basicSetup,
-  ],
-  parent: document.getElementById('editor')
-})
-
-console.log(view)
-run();
-
 function setMarkdown(name) {
     fetchTemplate(name).then(text => {
       window.view.dispatch({
@@ -37,7 +25,7 @@ function _updateiframe(iframe) {
   try {
     iframe.setAttribute(
       'src', 
-      "/render?q=" + LZString144.compressToEncodedURIComponent(value)
+      "/render?q=" + window.LZString144.compressToEncodedURIComponent(value)
     )
   } catch {}
 }
@@ -45,11 +33,12 @@ function _updateiframe(iframe) {
 const updateiframe = debounce(_updateiframe, 500)
 
 function run() {
+  console.log("Run()ning...")
   updateiframe(document.getElementById('theiframe'))
 }
 
 window.addEventListener("keydown", e => {
-  if (e.keyCode == 13 && (e.ctrlKey || e.metaKey) && !e.altKey && !e.shiftKey) {
+  if (e.keyCode == 13) {
     run();
     e.preventDefault();
   }
