@@ -6,7 +6,7 @@ async function fetchTemplate(name) {
 
 function setMarkdownTemplate(name) {
   fetchTemplate(name).then(text => {
-    setMarkdown(text)
+    window.setMarkdown(text)
   });
 }
 

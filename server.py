@@ -41,12 +41,9 @@ extension_configs = pelican_object.settings['MARKDOWN']['extension_configs']
 
 print(extension_configs)
 
-with open("static/mdtemplate_default.txt", "r") as fp:
-  DEFAULT_INPUT = fp.read()
-
 @app.route('/', methods=['GET'])
 def home():
-  return render_template("index.html", default_input=DEFAULT_INPUT)
+  return render_template("index.html")
 
 value_arg = "Global"
 
@@ -67,7 +64,7 @@ def render():
 @app.route('/template/<name>')
 def renderMdTemplate(name):
   try:
-    with open(f"static/mdtemplate_{name}.txt", "r") as fp:
+    with open(f"mdtemplate/{name}.txt", "r") as fp:
       return fp.read()
   except:
     return traceback.format_exc()
