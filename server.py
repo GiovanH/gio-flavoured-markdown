@@ -41,7 +41,7 @@ extension_configs = pelican_object.settings['MARKDOWN']['extension_configs']
 
 print(extension_configs)
 
-with open("static/default_input.md", "r") as fp:
+with open("static/mdtemplate_default.txt", "r") as fp:
   DEFAULT_INPUT = fp.read()
 
 @app.route('/', methods=['GET'])
@@ -64,6 +64,14 @@ def render():
   
   return render_template("markdown.html", **locals())
 
+@app.route('/template/<name>')
+def renderMdTemplate(name):
+  try:
+    with open(f"static/mdtemplate_{name}.txt", "r") as fp:
+      return fp.read()
+  except:
+    return traceback.format_exc()
+  
 @app.errorhandler(500)
 def internal_error(exception):
     print("500 error caught")

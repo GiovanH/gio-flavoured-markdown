@@ -1,3 +1,14 @@
+async function fetchTemplate(name) {
+  const response = await fetch('/template/' + name)
+  const text = await response.text()
+  return text
+}
+
+function setMarkdown(mdArea, name) {
+  fetchTemplate(name).then(text => {
+    mdArea.value = text
+  });
+}
 
 function debounce(func, timeout = 300){
   let timer;
@@ -7,9 +18,9 @@ function debounce(func, timeout = 300){
   };
 }
 
-function _updateiframe(mdArea, iframe_id) {
+function _updateiframe(mdArea, iframe) {
   try {
-    document.getElementById(iframe_id).setAttribute(
+    iframe.setAttribute(
       'src', 
       "/render?q=" + LZString144.compressToEncodedURIComponent(mdArea.value)
     )

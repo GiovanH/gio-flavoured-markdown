@@ -1,0 +1,27 @@
+::: imessage
+    + You
+        * First message
+    + Them
+        * Reply 
+---
+::: imessage name="im gio" style="--color-self: var(--color-imessage);"
+    + You
+        * First message
+    + Them
+        * Reply 
+---
+::: imessage image="/theme/images/icons/gio.svg" style="--color-self: var(--color-sms);"
+    + You
+        * First message
+    + Them
+        * Reply 
+---
+::: imessage name="im gio" image="/theme/images/icons/gio.svg"
+    + You
+        * First message
+        * Second message
+    + Them
+        * Reply 
+::: imessage style="--color-self: var(--color-sms);"
+    + You
+        * Another message

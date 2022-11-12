@@ -10,7 +10,7 @@
       <input type="checkbox" class="flaskonly toggle" checked />
       <div class="flex col">
         <h2>Markdown</h2>
-        <textarea id="md" oninput="updateiframe(this, 'theiframe')">
+        <textarea id="md" oninput="updateiframe(this, document.getElementById('theiframe'))">
           {{- default_input | safe -}}
         </textarea>
       </div>
@@ -20,10 +20,16 @@
         <iframe id="theiframe" src="/render"></iframe>
       </div>
     </div>
+    <span>
+      Templates:
+      {% for name in ['default', 'imessage'] %}
+      <a href="javascript:setMarkdown(document.getElementById('md'), '{{ name }}')">{{ name }}</a>
+      {% endfor %}
+      </span>
   </body>
   <script>
     (async () => {
-      updateiframe(document.getElementById("md"), "theiframe");
+      document.querySelector("textarea").oninput();
     })();
   </script>
 </html>
