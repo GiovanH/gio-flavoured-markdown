@@ -7,15 +7,15 @@
   
     <script src="https://codemirror.net/codemirror.js"></script>
   </head>
-  <body>
-    <div class="flex" style="height: 100%">
+  <body class="flex-parent col">
+    <div class="flex-parent flex-expand">
       <input type="checkbox" class="flaskonly toggle" checked />
-      <div class="flex col">
+      <div class="flex-parent flex-expand col">
         <h2>Markdown</h2>
         <div id="editor"></div>
       </div>
       <input type="checkbox" class="toggle" checked />
-      <div class="flex col">
+      <div class="flex-parent flex-expand col">
         <h2>Markdown HTML</h2>
         <iframe id="theiframe" src="/render"></iframe>
       </div>
