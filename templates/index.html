@@ -42,6 +42,7 @@
           doc: doc,
           extensions: [
             CM.codemirror.basicSetup,
+            CM['@codemirror/view'].EditorView.lineWrapping,
             CM["@codemirror/view"].keymap.of([
               CM["@codemirror/lang-markdown"].markdown,
               CM["@codemirror/commands"].indentWithTab,
