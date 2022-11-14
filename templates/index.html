@@ -30,31 +30,4 @@
       {% endfor %}
     </span>
   </body>
-  <script>
-    window.view = new CM.codemirror.EditorView({
-      parent: document.getElementById("editor"),
-    });
-    console.log(view);
-
-    function setMarkdown(doc) {
-      view.setState(
-        CM['@codemirror/state'].EditorState.create({
-          doc: doc,
-          extensions: [
-            CM.codemirror.basicSetup,
-            CM['@codemirror/view'].EditorView.lineWrapping,
-            CM["@codemirror/view"].keymap.of([
-              CM["@codemirror/lang-markdown"].markdown,
-              CM["@codemirror/commands"].indentWithTab,
-              // {key: "Ctrl-Enter", run: () => run()}
-            ]),
-          ],
-        })
-      );
-      updateiframe();
-    }
-    window.setMarkdown = setMarkdown;
-    setMarkdownTemplate("default");
-
-  </script>
 </html>
