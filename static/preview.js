@@ -1,26 +1,11 @@
-let view;
-let iframe;
-
-function setMarkdownTemplate(name) {
-  async function fetchTemplate(name) {
-    const response = await fetch("/template/" + name);
-    const text = await response.text();
-    return text;
-  }
-
-  addEventListener("DOMContentLoaded", (event) => {
-    const CM = window.CM;
-    iframe = document.getElementById("theiframe");
-
-
-    fetchTemplate(name).then((text) => {
-      window.setMarkdown(text);
-    });
-  }
+window.addEventListener("DOMContentLoaded", (event) => {
+  const CM = window.CM;
+  const iframe = document.getElementById("theiframe");
 
   function updateiframe() {
     const value = view.state.doc.toString();
-    const uri_component = window.LZString144.compressToEncodedURIComponent(value);
+    const uri_component =
+      window.LZString144.compressToEncodedURIComponent(value);
 
     try {
       iframe.setAttribute("src", "/render?q=" + uri_component);
@@ -42,7 +27,7 @@ function setMarkdownTemplate(name) {
     updateiframeDebounced();
   });
 
-  view = new CM.codemirror.EditorView({
+  const view = new CM.codemirror.EditorView({
     parent: document.getElementById("editor"),
   });
 
@@ -63,8 +48,19 @@ function setMarkdownTemplate(name) {
     );
     updateiframe();
   }
-  window.setMarkdown = setMarkdown;
+
+  function setMarkdownTemplate(name) {
+    setMarkdown(`Loading ${name}...`);
+    async function fetchTemplate(name) {
+      const response = await fetch("/template/" + name);
+      const text = await response.text();
+      return text;
+    }
+    fetchTemplate(name).then((text) => {
+      setMarkdown(text);
+    });
+  }
+  window.setMarkdownTemplate = setMarkdownTemplate;
+
   setMarkdownTemplate("default");
-});stener("keydown", e => {
-  updateiframeDebounced();
 });

@@ -1,4 +1,3 @@
-
 ::: discord avatar_Gio="https://file.garden/X1htvgJ0DEp_tp-Z/Static%20Bi%20Robin.png" avatar_Flare="/image2.jpg" color_Gio="#aa0001"
     - Gio <time>7:20 pm</time>
         + Wow! This discord layout is so much easier to understand, and more compact too!

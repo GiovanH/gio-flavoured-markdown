@@ -1,4 +1,3 @@
-
 ::: spoiler
     This is *true* markdown text.
     

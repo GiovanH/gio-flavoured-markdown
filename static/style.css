@@ -26,3 +26,8 @@ body {
 input.toggle:not(:checked) + * { display: none; }
 .flex h2, .flex input { flex: 0 1; }
 .flex input { margin-bottom: auto; }
+
+.cm-editor {
+    height: 100%;
+}
+
